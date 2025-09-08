@@ -204,7 +204,7 @@ Feel free to **fork** this repo, raise issues, and submit pull requests.
 ## 👨‍💻 Author
 
 **Krishna Kumar Ranjan**
-📧 \[krishnaranjan1111@gmail.com] | 🌐 \[LinkedIn/GitHub Profile Link]
+📧 \[krishnaranjan1111@gmail.com]
 
 ---
 
