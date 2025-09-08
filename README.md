@@ -1,27 +1,27 @@
 # 📚 Library Management System
 
-A simple yet effective **Library Management System** built using **Python**.
-This project helps manage books in a library by providing functionalities like adding, issuing, returning, deleting, and displaying books. It also includes a report system to track issued and returned books.
+A **Library Management System** built with **Python** and **MySQL**, designed to efficiently handle book records, issuing, returning, and generating reports.
+This project is ideal for understanding **database-driven applications** and **Python–SQL integration**.
 
 ---
 
 ## 🚀 Features
 
-* ➕ **Add Book** – Store details like book name, author, code, subject, and quantity.
-* 📖 **Issue Book** – Assign books to users with a tracking system (ID & date).
-* 🔄 **Return Book** – Manage returned books and update records.
-* ❌ **Delete Book** – Remove books from the library database.
+* ➕ **Add Book** – Store book details (name, author, code, subject, quantity).
+* 📖 **Issue Book** – Assign books to users with tracking (student ID & date).
+* 🔄 **Return Book** – Manage book returns and update records.
+* ❌ **Delete Book** – Remove a book from the system.
 * 📑 **Display Books** – View all available books with details.
-* 📊 **Report Menu** – Generate reports of issued and returned books.
-* ⏹ **Exit Program** – Safe exit from the system.
+* 📊 **Report Menu** – Track issued and returned books.
+* ⏹ **Exit Program** – Safe exit with confirmation.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Language**: Python 🐍
-* **Database/Storage**: File/Console-based data handling (extendable to SQL/NoSQL DBs)
-* **Platform**: CLI (Command Line Interface)
+* **Programming Language**: Python 🐍
+* **Database**: MySQL 🗄️
+* **Connector**: `mysql-connector-python`
 
 ---
 
@@ -29,46 +29,110 @@ This project helps manage books in a library by providing functionalities like a
 
 ```bash
 Library-Management-System/
-│── main.py          # Entry point of the program
-│── requirements.txt # Dependencies (if any)
-│── README.md        # Project documentation
-│── /data            # Stores issued/returned book records
+│── main.py              # Python program (menu-driven)
+│── database.sql         # SQL script for database & tables
+│── requirements.txt     # Python dependencies
+│── README.md            # Project documentation
 ```
 
 ---
 
-## ⚡ Usage
+## ⚡ Installation & Setup
 
-1. Clone the repository:
+### 1️⃣ Clone the Repository
 
-   ```bash
-   git clone https://github.com/your-username/Library-Management-System.git
-   cd Library-Management-System
-   ```
+```bash
+git clone https://github.com/your-username/Library-Management-System.git
+cd Library-Management-System
+```
 
-2. Run the program:
+### 2️⃣ Install Dependencies
 
-   ```bash
-   python main.py
-   ```
+```bash
+pip install mysql-connector-python
+```
 
-3. Choose from the available menu options:
+### 3️⃣ Setup MySQL Database
 
-   ```
-   1. ADD BOOK
-   2. ISSUE OF BOOK
-   3. RETURN OF BOOK
-   4. DELETE BOOK
-   5. DISPLAY BOOKS
-   6. REPORT MENU
-   7. EXIT PROGRAM
-   ```
+Run the following script (`database.sql`) in your MySQL server:
+
+```sql
+CREATE DATABASE LIBRARY_MANAGEMENT_SYSTEM;
+USE LIBRARY_MANAGEMENT_SYSTEM;
+
+-- Books Table
+CREATE TABLE books_ (
+  bname   VARCHAR(50),
+  author  VARCHAR(50),
+  bcode   VARCHAR(50),
+  total   INT,
+  subject VARCHAR(50)
+);
+
+INSERT INTO books_ (bname, author, bcode, total, subject) VALUES
+("Discovery of India","Jawaharlal Nehru",101,10,"History"),
+("Steve Jobs","Walter Issacson",102,10,"Biography"),
+("Think and Grow","Napolean Hill",103,10,"Economics"),
+("Eat to Live","Joel Fuhrman",104,10,"Health"),
+("War and Peace","Leo Tolstoy",105,10,"Philosophical fiction"),
+("Python for All","John Shovic",106,10,"Education"),
+("Rich Dad Poor Dad","Robert T.Kiyosaki",107,10,"Business"),
+("Lord of Flies","William Golding",108,10,"Fiction"),
+("Treasure Island","Robert Louis",109,10,"Fiction"),
+("The Wind in Willows","Kenneth Grahame",110,10,"Fiction");
+
+-- Issue Table
+CREATE TABLE issue_ (
+  name       VARCHAR(50),
+  regno      VARCHAR(50),
+  bcode      INT,
+  issue_date DATE
+);
+
+INSERT INTO issue_ (name, regno, bcode, issue_date) VALUES
+("Robert","AJU001",101,"2023-09-14"),
+("David","AJU002",102,"2023-09-15"),
+("John","AJU003",103,"2023-09-16"),
+("Wick","AJU004",104,"2023-09-17"),
+("Smith","AJU005",105,"2023-09-18"),
+("Will","AJU006",106,"2023-09-19"),
+("Paul","AJU007",107,"2023-09-20"),
+("Mike","AJU008",108,"2023-09-21"),
+("Bren","AJU009",109,"2023-09-22"),
+("Rony","AJU010",110,"2023-09-23");
+
+-- Return Table
+CREATE TABLE return___ (
+  name        VARCHAR(50),
+  regno       VARCHAR(50),
+  bcode       INT,
+  return_date DATE
+);
+
+INSERT INTO return___ (name, regno, bcode, return_date) VALUES
+("Robert","AJU001",101,"2023-10-14"),
+("David","AJU002",102,"2023-10-15"),
+("John","AJU003",103,"2023-10-16"),
+("Wick","AJU004",104,"2023-10-17"),
+("Smith","AJU005",105,"2023-10-18"),
+("Will","AJU006",106,"2023-10-19"),
+("Paul","AJU007",107,"2023-10-20"),
+("Mike","AJU008",108,"2023-10-21"),
+("Bren","AJU009",109,"2023-10-22"),
+("Rony","AJU010",110,"2023-10-23");
+```
 
 ---
 
-## 📝 Sample Output
+## ▶️ Run the Program
 
-```text
+```bash
+python main.py
+```
+
+You will see a **menu-driven interface**:
+
+```
 WELCOME TO LIBRARY MANAGEMENT SYSTEM
 
 1. ADD BOOK
@@ -79,35 +143,57 @@ WELCOME TO LIBRARY MANAGEMENT SYSTEM
 6. REPORT MENU
 7. EXIT PROGRAM
 
-Enter Task No:.......5
-
-Book Name: Rich Dad Poor Dad
-Author: Robert Kiyosaki
-Book Code: 102
-Total: 10
-Subject: Financial Education
+Enter Task No:.......
 ```
 
 ---
 
-## 📊 Report Example
+## 📊 Sample Reports
 
-* **Issued Books**:
+* **Issued Books**
 
-  ```python
-  [('Piyush', '1', 102, datetime.date(2023, 9, 14)), 
-   ('David', 'AJU002', 102, datetime.date(2023, 9, 15))]
-  ```
+```sql
+SELECT * FROM issue_;
+```
 
-* **Returned Books**:
+➡️ Output:
 
-  ```python
-  [('Robert', 'AJU001', 101, datetime.date(2023, 10, 14)), 
-   ('John', 'AJU003', 103, datetime.date(2023, 10, 16))]
-  ```
+```text
+('Robert','AJU001',101,'2023-09-14'),
+('David','AJU002',102,'2023-09-15'),
+...
+```
+
+* **Returned Books**
+
+```sql
+SELECT * FROM return___;
+```
+
+➡️ Output:
+
+```text
+('Robert','AJU001',101,'2023-10-14'),
+('David','AJU002',102,'2023-10-15'),
+...
+```
+
+* **Available Books**
+
+```sql
+SELECT * FROM books_;
+```
 
 ---
 
+## 🔮 Future Enhancements
+
+* 🔐 Role-based authentication (Admin/Student)
+* 📱 GUI version (Tkinter / PyQt)
+* 🌐 Web version (Flask/Django)
+* 📊 Analytics dashboard (issued/returned trends)
+
+---
 ## 🤝 Contribution
 
 Contributions are welcome! 🎉
@@ -115,12 +201,11 @@ Feel free to **fork** this repo, raise issues, and submit pull requests.
 
 ---
 
-## 📌 Future Enhancements
+## 👨‍💻 Author
 
-* 🔐 User authentication (Admin/Member roles)
-* 🌐 Web-based interface (Flask/Django)
-* 📱 Mobile-friendly version
+**Krishna Kumar Ranjan**
+📧 \[krishnaranjan1111@gmail.com] | 🌐 \[LinkedIn/GitHub Profile Link]
 
 ---
 
-✨ If you like this project, don’t forget to **star ⭐ the repo**!
+✨ If you found this project useful, don’t forget to **star ⭐ the repo**!
